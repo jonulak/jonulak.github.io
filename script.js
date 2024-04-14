@@ -12,12 +12,12 @@ const cardData = [
     {
       "image": "images/laptop-memoji.jpeg",
       "title": "Coding Experience",
-      "text": "I want to learn web development to transition to a career in software development. I already know python & swift and have an app published on the App Store."
+      "text": "I want to transition to a career in software development. I already know python & swift and have an <a href='https://apps.apple.com/us/app/cantrip/id6443567103'>app published on the App Store</a>."
     },
     {
       "image": "images/heart-memoji.jpeg",
       "title": "Hobbies",
-      "text": "Some of my hobbies include rock climbing, hiking, reading, & gardening. I also spend my free time with my 3 dogs and beautiful wife."
+      "text": "Some of my hobbies include rock climbing, hiking, reading, & gardening. I also spend my free time with my 3 dogs and lovely wife."
     },
     {
       "image": "images/zen-memoji.jpeg",
@@ -27,7 +27,7 @@ const cardData = [
     {
       "image": "images/call-memoji.jpeg",
       "title": "Vets Who Code",
-      "text": "I'd love to work and learn with you all! I'm excited for the chance to better myself through such an amazing program."
+      "text": "Thank you for your consideration & time. I look forward to hearing back & I'm excited for the chance to learn through such an amazing program."
     }
   ]
   
@@ -35,7 +35,9 @@ const cardData = [
     var cards = [];
     var container = document.getElementById("cardContainer");
     var scale = getScaleForFit();
+    console.log(`Scale: ${scale}`)
     var blankSpaceWidth = getLeadingWidthForCenter(scale);
+    console.log(`leading/trailing: ${blankSpaceWidth}`)
 
     cards.push(makeSpacer(blankSpaceWidth));
 
@@ -67,7 +69,7 @@ const cardData = [
   
       var displayText = document.createElement("div");
       displayText.className = "displayText";
-      displayText.innerText = cardData[i].text;
+      displayText.innerHTML = cardData[i].text;
       textBox.appendChild(displayText);
       card.appendChild(textBox);
   
@@ -79,12 +81,13 @@ const cardData = [
     container.replaceChildren(...cards);
     container.style.transform = `scale(${scale})`;
     centerContainer();
+    console.log(container.children[1].getBoundingClientRect())
   }
 
   function getLeadingWidthForCenter(scale) {
     var cardWidth = getCardWidth() * scale;
     var width = window.innerWidth;
-    var space = (width - cardWidth) / 2;
+    var space = ((width - cardWidth) / 2) - 10;
     return space;
   }
 
@@ -106,11 +109,14 @@ const cardData = [
   function getScaleForFit() {
     var cardWidth = getCardWidth();
     var windowWidth = window.innerWidth;
+    console.log(`Window Width: ${windowWidth}`)
     
+    var scale = 1;
     if (cardWidth * 2.1 > windowWidth) {
-      return windowWidth / (2 * cardWidth)
+      scale = windowWidth / (2 * cardWidth)
     }
-    return 1
+    console.log(`Card width: ${cardWidth * scale}`);
+    return scale;
   }
   
   function getCardWidth() {

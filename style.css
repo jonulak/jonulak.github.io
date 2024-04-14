@@ -22,6 +22,15 @@ body {
   text-align: center;
 }
 
+a {
+  color: white;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: teal;
+}
+
 .infoCard {
   display: inline-block;
   border-radius: 25px;
