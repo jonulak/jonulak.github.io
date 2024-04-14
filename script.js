@@ -34,7 +34,11 @@ const cardData = [
   function loadContent() {
     var cards = [];
     var container = document.getElementById("cardContainer");
-  
+    var scale = getScaleForFit();
+    var blankSpaceWidth = getLeadingWidthForCenter(scale);
+
+    cards.push(makeSpacer(blankSpaceWidth));
+
     for (var i = 0; i < cardData.length; i++) {
       var card = document.createElement("span");
       card.id = "card" + i;
@@ -69,12 +73,55 @@ const cardData = [
   
       cards.push(card)
     }
+
+    cards.push(makeSpacer(blankSpaceWidth));
   
     container.replaceChildren(...cards);
+    container.style.transform = `scale(${scale})`;
+    centerContainer();
+  }
+
+  function getLeadingWidthForCenter(scale) {
+    var cardWidth = getCardWidth() * scale;
+    var width = window.innerWidth;
+    var space = (width - cardWidth) / 2;
+    return space;
+  }
+
+  function makeSpacer(width) {
+    var spacer = document.createElement("span");
+    spacer.style.display = "inline-block";
+    spacer.style.width = width + "px";
+    return spacer;
+  }
+
+  function centerContainer() {
+    var container = document.getElementById("cardContainer");
+    var topSpacer = document.getElementById("topSpacer");
+    var windowHeight = window.innerHeight;
+    topSpacer.style.height = ((windowHeight - container.clientHeight) / 2 - 15) + "px";
+    topSpacer.style.display = "block";
+  }
+
+  function getScaleForFit() {
+    var cardWidth = getCardWidth();
+    var windowWidth = window.innerWidth;
+    
+    if (cardWidth * 2.1 > windowWidth) {
+      return windowWidth / (2 * cardWidth)
+    }
+    return 1
+  }
+  
+  function getCardWidth() {
+    return Number(
+      getComputedStyle(document.documentElement)
+      .getPropertyValue("--cardWidth")
+      .slice(0, -2)
+    )
   }
   
   function setActiveCard(cardID) {
-    var container = document.getElementById("cardContainer");
     var active = document.getElementsByClassName("infoCard active");
     for (i = 0; i < active.length; i++) {
       active[i].className = "infoCard inactive";
