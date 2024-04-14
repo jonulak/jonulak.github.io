@@ -1,0 +1,78 @@
+body {
+    margin-left: 0;
+    margin-right: 0;
+    background-color: slategrey;
+  }
+  
+  #container {
+    white-space: nowrap;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+  
+  #cardContainer {
+    margin: auto;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .infoCard {
+    display: inline-block;
+    border-radius: 25px;
+    border-style: solid;
+    border-width: thin;
+    border-color: rgba(0, 0, 0, 0.2);
+    text-align: left;
+    background-color: darkslategray;
+    white-space: normal;
+    margin-inline: 10px;
+    overflow: hidden;
+    color: white;
+    width: 320px;
+    height: 425px;
+    /* scale: 1; */
+    cursor: pointer;
+    transition: scale 0.3s,
+      opacity 0.3s;
+  }
+  
+  .infoCard.active {
+    scale: 1;
+    opacity: 100%;
+  }
+  
+  .infoCard.inactive {
+    scale: 0.9;
+    opacity: 50%;
+  }
+  
+  .infoCard.inactive:hover {
+    scale: 1;
+    opacity: 100%;
+  }
+  
+  .textBox {
+    padding: 8px;
+    padding-top: 12px;
+    transform: translateY(-25px);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    background-color: darkslategray;
+    text-align: center;
+    font-family: "Helvetica";
+  }
+  
+  .title {
+    font-size: 24;
+    font-weight: bold;
+  }
+  
+  .displayText {
+    padding: 2 px;
+  }
+  
+  .cardImage {
+    height: 75%;
+  }
