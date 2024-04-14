@@ -12,7 +12,7 @@ const cardData = [
     {
       "image": "images/laptop-memoji.jpeg",
       "title": "Coding Experience",
-      "text": "I want to transition to a career in software development. I already know python & swift and have an <a href='https://apps.apple.com/us/app/cantrip/id6443567103'>app published on the App Store</a>."
+      "text": "I want to transition to a career in software development. I already know python & swift and have an <a href='https://apps.apple.com/us/app/cantrip/id6443567103'>app published on the App Store.</a>"
     },
     {
       "image": "images/heart-memoji.jpeg",
@@ -27,7 +27,7 @@ const cardData = [
     {
       "image": "images/call-memoji.jpeg",
       "title": "Vets Who Code",
-      "text": "Thank you for your consideration & time. I look forward to hearing back & I'm excited for the chance to learn through such an amazing program."
+      "text": "Thank you for your time & consideration. I look forward to hearing back & I'm excited for the chance to learn through such an amazing program."
     }
   ]
   
